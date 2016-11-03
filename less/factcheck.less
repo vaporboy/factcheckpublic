@@ -29,7 +29,7 @@
 @black: #000;
 
 @factcheck-primary: #064E65; // dark-blue
-@factcheck-primary-dark: darken(@factcheck-primary, 10%);
+@factcheck-primary-dark: #062431;
 @factcheck-primary-darker: darken(@factcheck-primary, 20%);
 @factcheck-secondary: #41B6D9; // light-blue
 @factcheck-secondary-dark: darken(@factcheck-secondary, 10%);
@@ -732,7 +732,7 @@ p {
   background: url(@bg-intro) no-repeat center top;
   background-size: initial;
   background-position-y: -127px;
-  color: @white;
+  background-color: @factcheck-primary-dark;
   margin-top: -58px;
   z-index: -10;
   h1 {
@@ -1291,9 +1291,6 @@ p {
   .factcheck-promos {
 	.promo{
 		margin-bottom:45px;
-		&:after {
-    	border-right:none;
-    	}
     	&:first-child{
 	    margin-top:0;	
     	}
