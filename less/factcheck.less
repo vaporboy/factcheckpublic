@@ -1,0 +1,1345 @@
+// ------------------------------------------ //
+
+// Lone Star Bakery
+// Bootstrap 3.3.5 Theme
+// Author: Jason Walker
+// URL: http://two24studios.com
+
+// ------------------------------------------ //
+// variables
+// ------------------------------------------ //
+
+// paths
+
+@img: "../img";
+
+@logo: "@{img}/logo@2x.png";
+@logo-white: "@{img}/@{img}/logo@2x.png";
+@logo-mobile: "@{img}/logo@2x.png";
+@bg-intro: "@{img}/homehero.jpg";
+@bg-cta: "@{img}/bg-cta.jpg";
+@mobile-bg:"@{img}/mobile-header.png";
+
+// colors
+
+@white: #fff;
+@light-grey: #fafafa;
+@grey: #888;
+@dark-grey: #444;
+@black: #000;
+
+@factcheck-primary: #064E65; // dark-blue
+@factcheck-primary-dark: darken(@factcheck-primary, 10%);
+@factcheck-primary-darker: darken(@factcheck-primary, 20%);
+@factcheck-secondary: #41B6D9; // light-blue
+@factcheck-secondary-dark: darken(@factcheck-secondary, 10%);
+@factcheck-secondary-darker: darken(@factcheck-secondary, 10%);
+@factcheck-search: #2484A2;
+
+// typography
+
+@font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-weight-light: 300;
+@font-weight-normal: 400;
+@font-weight-semibold: 600;
+
+// spacing
+
+@container-desktop-padding: 90px 0;
+@container-tablet-padding: 60px 0;
+@container-mobile-padding: 45px 0;
+
+// ------------------------------------------ //
+// mixins
+// ------------------------------------------ //
+
+.hamburger-menu{
+	color:white;
+	font-size:1.4em;
+}
+
+.factcheck-logo(){
+  display: block;
+  width: 400px;
+  height: 90px;
+  background-size: 400px;
+}
+
+.factcheck-header-line(){
+  display: block;
+  width: 60px;
+  height: 5px;
+  margin-bottom: 30px;
+  background: @factcheck-primary;
+  content: "";
+}
+
+.center-block(){
+  margin: 0 auto;
+}
+
+.vertical-align(){
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+// ------------------------------------------ //
+// base
+// ------------------------------------------ //
+
+body {
+  font-size: 15px;
+  font-family: @font-family;
+  font-weight: @font-weight-light;
+  line-height: 23px;
+}
+
+a {
+  color: @factcheck-secondary-darker;
+  &:focus,
+  &:hover {
+    color: @factcheck-secondary;
+    outline: none;
+    text-decoration: none;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+// ------------------------------------------ //
+// typography
+// ------------------------------------------ //
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: @font-weight-light;
+}
+
+h1,
+p {
+  margin: 0 0 15px;
+}
+
+h1 {
+  font-size: 34px;
+}
+
+h2 {
+  margin: 23px 0 15px;
+  font-size: 23px;
+}
+
+h3 {
+  margin: 20px 0 15px;
+  font-size: 20px;
+}
+
+h4 {
+  margin: 15px 0 10px;
+  font-size: 15px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 23px;
+}
+
+// ------------------------------------------ //
+// buttons
+// ------------------------------------------ //
+
+.btn {
+  height: 40px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 2px;
+  outline: none;
+  color: @white;
+  font-weight: @font-weight-normal;
+  &:active,
+  &:active:focus,
+  &:focus {
+    box-shadow: none;
+    outline: none;
+    color: @white;
+  }
+  &:focus,
+  &:hover {
+    color: @white;
+  }
+}
+
+.btn-large {
+  height: 50px;
+  padding: 15px 50px;
+}
+
+.btn-default {
+  border-color: transparent;
+}
+
+.btn-primary {
+  background: @factcheck-primary;
+  &:active {
+    background: @factcheck-primary-darker;
+  }
+  &:focus,
+  &:hover {
+    background: @factcheck-primary-dark;
+  }
+}
+
+.btn-secondary {
+  background: @factcheck-secondary;
+  &:active {
+    background: @factcheck-secondary-darker;
+  }
+  &:focus,
+  &:hover {
+    background: @factcheck-secondary-dark;
+  }
+}
+
+.btn-group {
+  > .btn {
+    padding: 10px 20px;
+    font-weight: @font-weight-normal;
+    text-align: left;
+    &:active {
+      box-shadow: none;
+    }
+    .glyphicon {
+      top: 4px;
+      float: right;
+    }
+  }
+  &.open {
+    .dropdown-toggle {
+      border: 1px solid darken(@light-grey, 20%);
+      box-shadow: none;
+    }
+  }
+  &.pull-left {
+    margin-left: 15px;
+  }
+  &.pull-right {
+    margin-right: 15px;
+  }
+}
+
+// ------------------------------------------ //
+// nav
+// ------------------------------------------ //
+
+.nav {
+  margin: 0;
+  > li {
+    font-weight: @font-weight-normal;
+    > a {
+	  padding:10px 35px;
+      color: @white;
+      &:focus,
+      &:hover {
+        background: @factcheck-secondary;
+      }
+    }
+    &.active {
+      > a {
+        background: @factcheck-secondary;
+        &:focus,
+        &:hover {
+          background: @factcheck-secondary;
+        }
+      }
+    }
+    &.open {
+      > a,
+      a.dropdown-toggle {
+        background: @factcheck-secondary;
+      }
+    }
+  }
+  &.nav-pills {
+    > li {
+      > a {
+        border-radius: 2px;
+        color: @factcheck-secondary-darker;
+        font-weight: @font-weight-normal;
+        &:active {
+          background: fade(@factcheck-secondary, 10%);
+        }
+        &:focus,
+        &:hover {
+          background: fade(@factcheck-secondary, 5%);
+        }
+      }
+      &.active {
+        > a {
+          color: @white;
+          background: @factcheck-primary;
+          &:focus,
+          &:hover {
+            background: @factcheck-primary-dark;
+          }
+        }
+      }
+      ul {
+        li {
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+}
+
+.nav-tabs {
+  border-bottom-color: darken(@light-grey, 10%);
+  > li {
+    margin-bottom: 0;
+    > a {
+      padding: 10px 20px;
+      background: @light-grey;
+      border: 1px solid darken(@light-grey, 10%);
+      border-bottom: none;
+      color: @factcheck-secondary-darker;
+      &:focus,
+      &:hover {
+        background: @light-grey;
+        border-color: darken(@light-grey, 15%);
+        color: @factcheck-secondary;
+      }
+    }
+    &.active {
+      > a {
+        background: @factcheck-primary;
+        border: none;
+        border-bottom: 1px solid @factcheck-primary;
+        color: @white;
+        font-weight: @font-weight-semibold;
+        &:focus,
+        &:hover {
+          background: @factcheck-primary;
+          border: none;
+          border-bottom: 1px solid @factcheck-primary;
+          cursor: pointer;
+          color: @white;
+        }
+      }
+    }
+  }
+}
+
+.dropdown-menu {
+  margin: 0;
+  padding: 0;
+  border-top: none;
+  box-shadow: 0 0 4px fade(@black, 10%);
+  > li {
+    > a {
+      padding: 10px 20px;
+      border-bottom: 1px solid darken(@light-grey, 10%);
+      &:focus,
+      &:hover {
+        background: fade(@factcheck-secondary, 5%);
+      }
+    }
+    &:last-child {
+      a {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.navbar-collapse {
+  border: none;
+}
+
+.navbar-toggle {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    padding: 12px 13px;
+  border: none;
+  border-radius: 0;
+  .icon-bar {
+    width: 20px;
+    background: @white;
+  }
+}
+
+// ------------------------------------------ //
+// panels
+// ------------------------------------------ //
+
+.panel-default {
+  border: none;
+  box-shadow: none;
+  .panel-heading {
+    padding: 0;
+    background: @light-grey;
+    border: 1px solid fade(@dark-grey, 20%);
+    border-radius: 2px;
+    &.active {
+      background: @factcheck-primary;
+      border: none;
+      .panel-title {
+        font-weight: @font-weight-semibold;
+        a {
+          color: @white;
+        }
+      }
+    }
+    + .panel-collapse {
+      > .panel-body {
+        border: none;
+        padding: 20px 0;
+      }
+    }
+  }
+  .panel-title {
+    line-height: 20px;
+    a {
+      display: block;
+      padding: 10px;
+    }
+  }
+}
+
+.panel-group {
+  .panel-default {
+    border-radius: 0;
+  }
+}
+
+.tab-content {
+  > .tab-pane {
+    padding: 20px 0 0;
+  }
+}
+
+// ------------------------------------------ //
+// forms
+// ------------------------------------------ //
+
+.form-control {
+  height: 40px;
+  padding: 10px;
+  background: @white;
+  border: 1px solid fade(@dark-grey, 20%);
+  border-radius: 2px;
+  box-shadow: none;
+  outline: none;
+  &:focus {
+    background: @white;
+    border-color: fade(@dark-grey, 40%);
+    box-shadow: none;
+  }
+}
+
+// ------------------------------------------ //
+// jqueryui
+// ------------------------------------------ //
+
+.ui-datepicker {
+  .ui-datepicker-prev,
+  .ui-datepicker-next {
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 20px;
+    text-transform: uppercase;
+  }
+  .ui-datepicker-prev {
+    float: left;
+  }
+  .ui-datepicker-next {
+    float: right;
+  }
+  .ui-datepicker-title {
+    padding: 10px 0;
+    text-align: center;
+  }
+  .ui-datepicker-calendar {
+    width: 100%;
+    text-align: center;
+    a {
+      color: @grey;
+    }
+    td {
+      padding: 10px 0;
+    }
+    th {
+      color: @factcheck-secondary-darker;
+      font-weight: @font-weight-light;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .ui-datepicker-today {
+      background: @factcheck-primary;
+      border-radius: 2px;
+      a {
+        color: @white;
+        font-weight: @font-weight-normal;
+      }
+    }
+  }
+}
+
+// ------------------------------------------ //
+// top
+// ------------------------------------------ //
+
+.factcheck-top {
+  padding: 0;
+  background: @factcheck-primary;
+  .container{
+	  padding-top:10px;
+	  background-image:url(../img/headerBG.png);
+	  height:105px;
+  }
+  .logo {
+    float: left;
+    a {
+      background: url(@logo) no-repeat 0 0;
+      .factcheck-logo();
+    }
+  }
+  .search {
+    float: right;
+    margin-top: -10px;
+    .form-control {
+      float: left;
+      width: 220px;
+      margin-right: 0;
+      background-color: lighten(@factcheck-search, 5%);
+      color:white;
+      &::-webkit-input-placeholder{
+	      color:white;
+      }
+      &::-moz-placeholder{
+	      color:white;
+      }
+      &::-ms-input-placeholder{
+	      color:white;
+      }
+      &:focus{
+	      border-color:@factcheck-secondary;
+      }
+    }
+    .btn-search {
+	    .fa-search{
+		    font-size:2em;
+	    }
+	  &.espanol{
+	  	padding: 10px 25px;
+	  	margin-left: 18px;
+	  }
+	  padding: 6px 9px;
+      float: left;
+      background: @factcheck-search;
+      border-radius: 0;
+      border:none;
+      outline: none;
+      color: @white;
+      font-weight: @font-weight-light;
+      &:active {
+        background: @factcheck-primary-darker;
+      }
+      &:focus,
+      &:hover {
+        background: lighten(@factcheck-search, 5%);
+      }
+    }
+  }
+  .headerTagline{
+	  color: @factcheck-secondary;
+	  font-size: 1.5em;
+	  letter-spacing: .15em;
+	  margin-top: 1em;
+	  }
+}
+
+// ------------------------------------------ //
+// navbar
+// ------------------------------------------ //
+
+.factcheck-navbar {
+  margin: 0;
+  background: fade(@factcheck-secondary, 40%);
+  border: none;
+  border-radius: 0;
+}
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 58px;
+    height: 58px;
+    padding-top: 0;
+    text-transform: uppercase;
+    img{
+	    height:100%;
+    }
+}
+.navbar-brand{
+	padding:4px;
+	height: 45px;
+}
+.navbar{
+	min-height: 45px;
+}
+// ------------------------------------------ //
+// breadcrumb
+// ------------------------------------------ //
+
+.factcheck-breadcrumb {
+  margin: 45px 0;
+  .breadcrumb {
+    margin: 0;
+    padding: 15px;
+    background: @light-grey;
+    font-weight: @font-weight-normal;
+  }
+}
+
+// ------------------------------------------ //
+// content
+// ------------------------------------------ //
+
+.factcheck-breadcrumb + .factcheck-content {
+  padding-top: 0;
+}
+
+.factcheck-content {
+  padding: @container-tablet-padding;
+  h1 {
+    margin: 0 0 20px;
+  }
+  .table {
+    a {
+      font-weight: @font-weight-normal;
+    }
+    thead {
+      background: fade(@factcheck-secondary, 5%);
+      th {
+        padding: 15px 10px;
+        border-bottom-width: 1px;
+      }
+    }
+  }
+  .video-container {
+    position: relative;
+    height: 0;
+    margin: 0 0 20px;
+    padding: 0 0 56.25%;
+    overflow: hidden;
+    iframe {
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  #calendar {
+    margin-top: 60px;
+  }
+}
+
+
+
+// ------------------------------------------ //
+// modules
+// ------------------------------------------ //
+
+.factcheck-module {
+  margin: 0 0 45px;
+  .module-title {
+    margin: 0 0 15px;
+    padding: 0 0 15px;
+    border-bottom: 1px solid darken(@light-grey, 5%);
+    font-size: 20px;
+    line-height: 30px;
+  }
+  img {
+    max-width: 100%;
+    margin: 0 0 10px;
+    border-radius: 50%;
+  }
+  ol,
+  ul {
+    padding: 0 0 0 20px;
+    li {
+      margin: 0 0 10px;
+    }
+    &.nav {
+      padding: 0;
+      li {
+        margin: 0;
+      }
+    }
+  }
+  .event {
+    margin-bottom: 15px;
+    .date {
+      margin-bottom: 5px;
+      color: @factcheck-secondary;
+      font-size: 12px;
+      font-weight: @font-weight-normal;
+      line-height: 15px;
+      span {
+        margin-left: 2px;
+        color: @factcheck-secondary-darker;
+      }
+    }
+    .title {
+      margin: 0;
+      font-size: 15px;
+      line-height: 23px;
+      a {
+        color: @factcheck-secondary;
+      }
+    }
+  }
+}
+
+// ------------------------------------------ //
+// alerts
+// ------------------------------------------ //
+
+.factcheck-intro {
+  .alert {
+    position: absolute;
+    top: -70px;
+    width: 100%;
+  }
+}
+
+// ------------------------------------------ //
+// intro
+// ------------------------------------------ //
+
+.factcheck-intro {
+  position: relative;
+  padding: 203px 0;
+  background: url(@bg-intro) no-repeat center top;
+  background-size: initial;
+  background-position-y: -127px;
+  color: @white;
+  margin-top: -58px;
+  z-index: -10;
+  h1 {
+    margin: 0 0 10px;
+  }
+  p {
+  	margin-bottom: 30px;
+    line-height: 1.2em;
+    text-align: right;
+    font-size: 2.2em;
+    color: rgba(255,255,255,.5);
+  }
+  .btns {
+    .btn {
+      margin-right: 20px;
+    }
+  }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid @white;
+    &:active {
+      background: fade(@white, 30%);
+    }
+    &:focus,
+    &:hover {
+      background: fade(@white, 20%);
+    }
+  }
+}
+
+// ------------------------------------------ //
+// promos
+// ------------------------------------------ //
+
+.factcheck-promos {
+  padding: 30px;
+  background: @factcheck-secondary;
+  text-align: center;
+  p {
+    max-width: 150px;
+    .center-block();
+  }
+  .promo{
+	  //border-right:solid 3px white;
+	  //border-bottom: solid 1px white;
+	&:before,&:after{
+		content:'';
+    border:1px solid transparent;
+    position:absolute;
+	}
+	&:before {
+	    left:30px;
+	    right:30px;
+	    top:0;
+	    bottom:0;
+	    border-bottom:1px solid white;
+	}
+	&:after {
+    top:0px;
+    bottom:30px;
+    left:0;
+    right:0;
+    border-right:3px solid white;
+	}
+	&:last-child:after {
+		border-right:none;
+	}
+	
+	}
+  .thumb {
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    background: darken(@factcheck-primary, 50%);
+    border-radius: 50%;
+    img {
+      border-radius: 50%;
+      &:focus,
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+  .promo-title {
+		  margin: 10px 0 30px 0;
+		  color:#fff;
+		  font-size: 1.75em;
+		  font-weight: 500;
+		  text-align: center;
+		  a{
+		  	color:white;
+		  }
+	}
+	.promo-row:last-child{
+		margin-top:30px;
+		.promo:before{
+			border-bottom: none;
+		}
+	}
+}
+
+// ------------------------------------------ //
+// highlights
+// ------------------------------------------ //
+
+.factcheck-highlight {
+  padding: @container-desktop-padding;
+  .highlight-img {
+    img {
+      border-radius: 50%;
+    }
+  }
+  .highlight-txt {
+    min-height: 460px;
+    .vertical-align();
+    &:before {
+      .factcheck-header-line();
+    }
+    h2 {
+      margin: 0 0 30px;
+      color: @factcheck-secondary-darker;
+      font-size: 34px;
+      line-height: 45px;
+    }
+    p {
+      font-size: 23px;
+      line-height: 34px;
+    }
+  }
+}
+
+// ------------------------------------------ //
+// news & events
+// ------------------------------------------ //
+
+.factcheck-news-events {
+  padding: @container-desktop-padding;
+  background: @light-grey;
+  h2 {
+    &:before {
+      .factcheck-header-line();
+    }
+  }
+  .row {
+    margin: 0;
+  }
+  .date {
+    float: left;
+    width: 10%;
+    min-width: 60px;
+    margin: 3px 5% 0 0;
+    color: @factcheck-secondary;
+    font-size: 12px;
+    line-height: 15px;
+    span {
+      display: block;
+      color: @factcheck-secondary-darker;
+      font-weight: @font-weight-semibold;
+    }
+  }
+  .title {
+    float: left;
+    width: 70%;
+    margin: 0 0 15px;
+    font-size: 15px;
+    line-height: 23px;
+    a {
+      display: block;
+    }
+  }
+}
+
+// ------------------------------------------ //
+// text block
+// ------------------------------------------ //
+
+.factcheck-text-block {
+  padding: @container-desktop-padding;
+  background: @light-grey;
+  h2 {
+    color: @factcheck-secondary-darker;
+    font-size: 34px;
+    line-height: 45px;
+    &:before {
+      .factcheck-header-line();
+    }
+  }
+  .testimonial {
+    padding: 15px 0 0;
+    .thumb {
+      float: left;
+      max-width: 140px;
+      margin-right: 20px;
+      img {
+        border-radius: 50%;
+      }
+    }
+    .text {
+      min-height: 140px;
+      .vertical-align();
+      color: @grey;
+      .author {
+        color: @factcheck-secondary-darker;
+        strong {
+          font-weight: @font-weight-semibold;
+        }
+      }
+    }
+  }
+}
+
+// ------------------------------------------ //
+// cta
+// ------------------------------------------ //
+
+.factcheck-cta {
+  padding: @container-desktop-padding;
+  background: url(@bg-cta) no-repeat center top;
+  background-size: cover;
+  color: @white;
+  p {
+    margin-bottom: 30px;
+    font-size: 23px;
+    line-height: 34px;
+    text-align: center;
+  }
+  .btn {
+    display: block;
+    max-width: 220px;
+    .center-block();
+  }
+}
+
+// ------------------------------------------ //
+// footer
+// ------------------------------------------ //
+
+.factcheck-footer {
+  padding: @container-tablet-padding;
+  background: lighten(@black, 10%);
+  border-bottom: lighten(@black, 10%);
+  a {
+    color: fade(@white, 60%);
+    &:focus,
+    &:hover {
+      color: @factcheck-secondary;
+    }
+  }
+  p {
+    color: @white;
+    text-align: center;
+  }
+  .logo {
+    margin: 0 0 60px;
+    a {
+      background: url(@logo-white) no-repeat 0 0;
+      .factcheck-logo();
+      .center-block();
+    }
+  }
+  .links {
+    margin-bottom: 0;
+    a {
+      margin: 0 15px;
+    }
+  }
+  .copyright {
+    margin-bottom: 0;
+    padding: @container-tablet-padding 0;
+    color: fade(@white, 40%);
+  }
+}
+
+// ------------------------------------------ //
+// media queries
+// ------------------------------------------ //
+
+@media (max-width: 992px) {
+  .nav {
+    > li {
+      > a {
+        color: @dark-grey;
+        &:focus,
+        &:hover {
+          background: @factcheck-secondary;
+        }
+      }
+      &.active {
+        > a {
+          background: @factcheck-secondary;
+          color: @white;
+        }
+      }
+      &.open {
+        > a,
+        a.dropdown-toggle {
+          background: fade(@factcheck-secondary-darker, 10%);
+          border-color: @light-grey;
+          &:focus,
+          &:hover {
+            background: fade(@factcheck-secondary-darker, 10%);
+          }
+        }
+      }
+    }
+  }
+
+  .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    > li {
+      > a {
+        padding: 10px;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  .navbar-header {
+    float: none;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-collapse {
+    padding: 0;
+  }
+
+  .navbar-fixed-top {
+		top: 0;
+    border-width: 0 0 1px;
+  }
+
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+
+  .navbar-nav {
+    float: none !important;
+    > li {
+      float: none;
+      > a {
+        padding: 10px;
+      }
+      > .dropdown-menu {
+        border: none;
+      }
+    }
+  }
+
+  .collapse.in {
+    display:block !important;
+	}
+
+	.factcheck-content {
+  	.factcheck-main {
+    	margin: 0 0 40px;
+  	}
+	}
+
+  .factcheck-top {
+	  padding:0;
+    .container {
+      width: 90%;
+      height: 0;
+	  background: none;
+	  padding:0;
+    }
+    .logo {
+      a {
+        width: 300px;
+        background: url(@logo-mobile) no-repeat 0 0;
+        background-size: 300px;
+        height:70px;
+      }
+     }
+  }
+
+  .factcheck-navbar {
+    z-index: 98;
+    background: @factcheck-primary;
+    background-image: url(@mobile-bg);
+    background-repeat: no-repeat;
+    .container {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    .nav {
+      background: @white;
+      > li {
+        a {
+          border-bottom: 1px solid @light-grey;
+          padding-top: 0px;
+          &:active,
+          &:hover {
+            background: fade(@factcheck-secondary, 5%);
+          }
+        }
+        &.active:hover,
+        &.active:active {
+          background: @factcheck-secondary;
+        }
+      }
+    }
+  }
+
+  .factcheck-intro {
+    padding: @container-tablet-padding;
+  	h1 {
+    	font-size: 30px;
+  	}
+	}
+
+  .factcheck-highlight {
+    padding: @container-tablet-padding;
+    .highlight-img,
+    .highlight-txt {
+      float: left;
+      width: 50%;
+    }
+    .highlight-txt {
+      display: block;
+      min-height: inherit;
+      padding-top: 30px;
+      h2 {
+        font-size: 23px;
+        line-height: 34px;
+      }
+      p {
+        font-size: 20px;
+        line-height: 30px;
+      }
+    }
+  }
+
+  .factcheck-news-events {
+    .col-sm-10 {
+      &:first-child {
+        margin-bottom: 60px;
+      }
+      h2 {
+        margin-bottom: 30px;
+      }
+      .title {
+        min-height: 46px;
+      }
+    }
+  }
+
+  .factcheck-text-block {
+    padding: @container-tablet-padding;
+    h2 {
+      font-size: 23px;
+      line-height: 34px;
+    }
+  }
+
+  .factcheck-cta {
+    padding: @container-tablet-padding;
+    p {
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+
+}
+@media (min-width: 768px){
+	.navbar>.container .navbar-brand{
+		margin-left:inherit;
+		}
+}
+@media (max-width: 768px) {
+
+  .navbar-nav {
+    .nav {
+      > li {
+        > .dropdown-menu {
+          border: none;
+        }
+      }
+    }
+    .open {
+      .dropdown-menu {
+        > li {
+          > a {
+            padding-top: 20px;
+          }
+        }
+        .dropdown-header {
+
+        }
+      }
+    }
+  }
+
+  .factcheck-top {
+    .logo {
+      float: none;
+      width: 124px;
+      .center-block();
+    }
+    .search {
+      display: none;
+    }
+  }
+
+  .factcheck-navbar {
+    .container {
+      > .navbar-header,
+      > .navbar-collapse {
+        margin: 0;
+      }
+    }
+  }
+
+  .factcheck-intro {
+    padding: @container-mobile-padding;
+    h1 {
+      font-size: 23px;
+      line-height: 34px;
+    }
+    p {
+      font-size: 15px;
+      line-height: 23px;
+    }
+    .btns {
+      .btn {
+        display: block;
+        &:first-child {
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+
+  .factcheck-promos {
+    padding: @container-mobile-padding;
+    .col-xs-10 {
+      margin-bottom: 45px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .factcheck-highlight {
+    padding: @container-mobile-padding;
+    .highlight-img,
+    .highlight-txt {
+      float: none;
+    }
+    .highlight-img {
+      width: 60%;
+      max-width: 320px;
+    }
+    .highlight-txt {
+      width: 80%;
+      .center-block();
+    }
+  }
+
+  .factcheck-news-events {
+    padding: @container-mobile-padding;
+  }
+
+  .factcheck-text-block {
+    padding: @container-mobile-padding;
+    .testimonial {
+      .thumb {
+        float: none;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .factcheck-cta {
+    p {
+      font-size: 17px;
+      line-height: 25px;
+    }
+  }
+
+  .factcheck-footer {
+    .logo {
+      margin: 0 auto 45px;
+      a {
+        width: 124px;
+        background-size: 124px 57px;
+      }
+    }
+    .links {
+      a {
+        display: inline-block;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+}
+
+@media (max-width: 480px) {
+
+
+}

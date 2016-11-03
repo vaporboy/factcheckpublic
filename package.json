@@ -1,0 +1,17 @@
+{
+  "name": "Lone Star Bakery",
+  "version": "1.0.0",
+  "description": "Lone Star Bakery",
+  "main": "Gruntfile.js",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-less": "~0.12.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "jit-grunt": "~0.7.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
