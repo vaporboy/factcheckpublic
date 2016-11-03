@@ -16,7 +16,7 @@
 @logo: "@{img}/logo@2x.png";
 @logo-white: "@{img}/@{img}/logo@2x.png";
 @logo-mobile: "@{img}/logo@2x.png";
-@bg-intro: "@{img}/homehero.jpg";
+@bg-intro: "@{img}/homeHero.jpg";
 @bg-cta: "@{img}/bg-cta.jpg";
 @mobile-bg:"@{img}/mobile-header.png";
 
@@ -46,8 +46,8 @@
 // spacing
 
 @container-desktop-padding: 90px 0;
-@container-tablet-padding: 60px 0;
-@container-mobile-padding: 45px 0;
+@container-tablet-padding: 140px 0;
+@container-mobile-padding: 140px 0;
 
 // ------------------------------------------ //
 // mixins
@@ -535,7 +535,15 @@ p {
 	      border-color:@factcheck-secondary;
       }
     }
-    .btn-search {
+  }
+  .headerTagline{
+	  color: @factcheck-secondary;
+	  font-size: 1.5em;
+	  letter-spacing: .15em;
+	  margin-top: 1em;
+	  }
+}
+.btn-search {
 	    .fa-search{
 		    font-size:2em;
 	    }
@@ -558,14 +566,6 @@ p {
       &:hover {
         background: lighten(@factcheck-search, 5%);
       }
-    }
-  }
-  .headerTagline{
-	  color: @factcheck-secondary;
-	  font-size: 1.5em;
-	  letter-spacing: .15em;
-	  margin-top: 1em;
-	  }
 }
 
 // ------------------------------------------ //
@@ -789,6 +789,7 @@ p {
 	    top:0;
 	    bottom:0;
 	    border-bottom:1px solid white;
+	    margin-bottom: -5px;
 	}
 	&:after {
     top:0px;
@@ -827,7 +828,7 @@ p {
 		  }
 	}
 	.promo-row:last-child{
-		margin-top:30px;
+		margin-top:40px;
 		.promo:before{
 			border-bottom: none;
 		}
@@ -1203,6 +1204,19 @@ p {
       line-height: 30px;
     }
   }
+  .btn-search {
+	  padding: 6px 9px;
+      float: left;
+      background: @factcheck-primary;
+      height:45px;
+      &:focus,
+      &:hover {
+        background: @factcheck-primary;
+      }
+      &.espanol{
+	      padding:13px 25px;
+      }
+	}
 
 }
 @media (min-width: 768px){
@@ -1261,8 +1275,8 @@ p {
       line-height: 34px;
     }
     p {
-      font-size: 15px;
-      line-height: 23px;
+      font-size: 2em;
+	  line-height: 1.2em;
     }
     .btns {
       .btn {
@@ -1275,7 +1289,22 @@ p {
   }
 
   .factcheck-promos {
-    padding: @container-mobile-padding;
+	.promo{
+		margin-bottom:45px;
+		&:after {
+    	border-right:none;
+    	}
+    	&:first-child{
+	    margin-top:0;	
+    	}
+	}
+	.promo-row:last-child{
+		.promo:before{
+			border-bottom: 1px solid white;
+		}
+	}
+
+    padding: 45px 15px;
     .col-xs-10 {
       margin-bottom: 45px;
       &:last-child {
