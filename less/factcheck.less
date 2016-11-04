@@ -1430,6 +1430,15 @@ p {
 		}
 		.promo-row:last-child {
 			margin-top: 0;
-		}	
+		}
+		.promo-row:nth-child(even) .promo{
+			&:last-child,&:nth-last-child(2) {
+				&:before{
+					border-bottom: none;
+				}
+				margin-bottom:0;
+			}
+			
+		}
 	}
 }
