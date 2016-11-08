@@ -5,12 +5,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mariajuana Factcheck</title>
+  <title>Marijuana Factcheck</title>
     <script src="https://use.fontawesome.com/8eb1e4835f.js"></script>
   <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/factcheck.css" rel="stylesheet">
   <link href="css/animate.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -73,7 +74,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-6 col-sm-4 pull-right">
-					<p>reviewing the latest research on kids' health and safety</p>
+					<p>reviewing the latest research related to kids' health and safety</p>
 				</div>
 			</div>
 		</div>
@@ -83,39 +84,55 @@
     <div class="container">
       <div class="row promo-row">
         <div class="promo col-xs-6 col-md-3 col-sm-6">
+	        <div class="box">
           <a class="thumb" href="#"><img src="img/brain.png" alt="Promo Thumb 1"></a>
           <h2 class="promo-title"><a href="#">Brain Development</a></h2>
+	        </div>
         </div>
-        <div class="promo col-xs-6 col-md-3 col-sm-6">
+        <div class="promo col-xs-6 col-md-3 col-sm-6">	        
+	        <div class="box">
           <a class="thumb" href="#"><img src="img/ecigs.jpg" alt="Promo Thumb 2"></a>
           <h2 class="promo-title"><a href="#">E-cigs & Vape Pens</a></h2>
+	        </div>
         </div>
         <div class="promo col-xs-6 col-md-3 col-sm-6">
+	        <div class="box">
           <a class="thumb" href="#"><img src="img/iq.png" alt="Promo Thumb 3"></a>
           <h2 class="promo-title"><a href="#">I.Q.</a></h2>
+	        </div>
         </div>
         <div class="promo col-xs-6 col-md-3 col-sm-6">
+	        <div class="box">
           <a class="thumb" href="#"><img src="img/schoolGrades.jpg" alt="Promo Thumb 3"></a>
           <h2 class="promo-title"><a href="#">School & Grades</a></h2>
+          </div>
         </div>
 
       </div>
       	<div class="row promo-row">
         <div class="promo col-xs-6 col-md-3 col-sm-6">
+	       <div class="box">
           <a class="thumb" href="#"><img src="img/howStrong.jpg" alt="Promo Thumb 1"></a>
           <h2 class="promo-title"><a href="#">How Strong is it?</a></h2>
+	       </div>
         </div>
         <div class="promo col-xs-6 col-md-3 col-sm-6">
+	      <div class="box">
           <a class="thumb" href="#"><img src="img/erVisits.jpg" alt="Promo Thumb 2"></a>
           <h2 class="promo-title"><a href="#">E.R Visits</a></h2>
+	      </div>
         </div>
         <div class="promo col-xs-6 col-md-3 col-sm-6">
+	        <div class="box">
           <a class="thumb" href="#"><img src="img/graduation.jpg" alt="Promo Thumb 3"></a>
           <h2 class="promo-title"><a href="#">High School Graduation</a></h2>
+	        </div>
         </div>
         <div class="promo col-xs-6 col-md-3 col-sm-6">
+	      <div class="box">
           <a class="thumb" href="#"><img src="img/adhd.png" alt="Promo Thumb 3"></a>
           <h2 class="promo-title"><a href="#">ADHD</a></h2>
+	      </div>
         </div>
 
       </div>
@@ -142,79 +159,12 @@
 
   <script src="bower_components/jquery/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script>
-	  // IIFE
-	  // set row divs to equal height based on highest div	
-      (function() {
-
-      var currentTallest = 0,
-          currentRowStart = 0,
-          rowDivs = new Array();
-
-      function setConformingHeight(el, newHeight) {
-        // set the height to something new, but remember the original height in case things change
-        el.data("originalHeight", (el.data("originalHeight") == undefined) ? (el.height()) : (el.data("originalHeight")));
-        el.height(newHeight);
-      }
-
-      function getOriginalHeight(el) {
-        // if the height has changed, send the originalHeight
-        return (el.data("originalHeight") == undefined) ? (el.height()) : (el.data("originalHeight"));
-      }
-
-      function columnConform() {
-
-        // find the tallest DIV in the row, and set the heights of all of the DIVs to match it.
-        $('div.promo').each(function() {
-
-          // "caching"
-          var $el = $(this);
-
-          var topPosition = $el.position().top;
-
-          if (currentRowStart != topPosition) {
-
-            // we just came to a new row.  Set all the heights on the completed row
-            for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) setConformingHeight(rowDivs[currentDiv], currentTallest);
-
-            // set the variables for the new row
-            rowDivs.length = 0; // empty the array
-            currentRowStart = topPosition;
-            currentTallest = getOriginalHeight($el);
-            rowDivs.push($el);
-
-          } else {
-
-            // another div on the current row.  Add it to the list and check if it's taller
-            rowDivs.push($el);
-            currentTallest = (currentTallest < getOriginalHeight($el)) ? (getOriginalHeight($el)) : (currentTallest);
-
-          }
-
-
-        });
-
-        // do the last row
-        for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-          setConformingHeight(rowDivs[currentDiv], currentTallest);
-        }
-
-      }
-
-      // If the content might change... probably debounce this and run it.
-      // $(window).resize(function() {
-      //  columnConform();
-      // });
-
-      // DOM Ready
-      // You might also want to wait until window.onload if images are the things that are unequalizing the blocks
-      $(function() {
-        columnConform();
-      });
-
-    })();
-
-	  </script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+<script>
+	$(function() {
+	    $('.box').matchHeight(false);
+	});
+</script>
 	  <!-- back to top -->
 	  <script>
 		$(document).ready(function(){
