@@ -124,7 +124,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-weight: @font-weight-light;
+  font-weight: @font-weight-bold;
 }
 
 h1,
@@ -248,7 +248,7 @@ p {
   > li {
     font-weight: @font-weight-bold;
     > a {
-	  padding:10px 36px;
+	  padding:10px 25px;
       color: @white;
       &:focus,
       &:hover {
@@ -653,7 +653,7 @@ p {
 }
 
 .factcheck-content {
-  padding: @container-tablet-padding;
+  padding: 0;
   h1 {
     margin: 0 0 20px;
   }
@@ -686,6 +686,42 @@ p {
   #calendar {
     margin-top: 60px;
   }
+	.factcheck-pagetitle{
+		background-color: @factcheck-primary;
+		padding: 8px 0;
+		h1{
+			text-transform: uppercase;
+			font-size:1.5em;
+			letter-spacing: .1em;
+			color:white;
+			margin:0;
+		}
+	}
+	.factcheck-categoryrow{
+		    padding-bottom: 25px;
+		&:nth-child(odd){
+			background-color: lighten(@factcheck-secondary,20%);
+		}
+		&:nth-child(even){
+			background-color: white;
+		}
+		.catthumb {
+	    display: block;
+	    width: 140px;
+	    margin: 0 auto;
+	    background: transparent;
+	    border-radius: 50%;
+	    img {
+	      border-radius: 50%;
+	      margin-top:15px;
+	    }
+	    }
+	}
+	.factcheck-quoterow{
+		background-color:@factcheck-primary;
+		color:white;
+		padding: 25px;
+	}
 }
 
 
@@ -767,14 +803,14 @@ p {
 	  z-index: -2
 }
 .factcheck-intro {
-  z-index:0;
   position: relative;
   padding: 160px 0;
   background: url(@bg-intro) no-repeat center top;
   background-size: initial;
   background-position-y: -127px;
   margin-top: -58px;
-  z-index:-1
+  z-index:-1;
+  min-height:225px;
   h1 {
     margin: 0 0 10px;
   }
@@ -803,6 +839,10 @@ p {
   }
   .row{
 	  max-width:97%;
+  }
+  &.intro-brain{
+	  background-image: url(../img/brain_hero.jpg);
+	  z-index: 1;
   }
 }
 
@@ -955,66 +995,6 @@ p {
   }
 }
 
-// ------------------------------------------ //
-// text block
-// ------------------------------------------ //
-
-.factcheck-text-block {
-  padding: @container-desktop-padding;
-  background: @light-grey;
-  h2 {
-    color: @factcheck-secondary-darker;
-    font-size: 34px;
-    line-height: 45px;
-    &:before {
-      .factcheck-header-line();
-    }
-  }
-  .testimonial {
-    padding: 15px 0 0;
-    .thumb {
-      float: left;
-      max-width: 140px;
-      margin-right: 20px;
-      img {
-        border-radius: 50%;
-      }
-    }
-    .text {
-      min-height: 140px;
-      .vertical-align();
-      color: @grey;
-      .author {
-        color: @factcheck-secondary-darker;
-        strong {
-          font-weight: @font-weight-semibold;
-        }
-      }
-    }
-  }
-}
-
-// ------------------------------------------ //
-// cta
-// ------------------------------------------ //
-
-.factcheck-cta {
-  padding: @container-desktop-padding;
-  background: url(@bg-cta) no-repeat center top;
-  background-size: cover;
-  color: @white;
-  p {
-    margin-bottom: 30px;
-    font-size: 23px;
-    line-height: 34px;
-    text-align: center;
-  }
-  .btn {
-    display: block;
-    max-width: 220px;
-    .center-block();
-  }
-}
 
 // ------------------------------------------ //
 // footer
@@ -1155,11 +1135,6 @@ p {
     display:block !important;
 	}
 
-	.factcheck-content {
-  	.factcheck-main {
-    	margin: 0 0 40px;
-  	}
-	}
 
   .factcheck-top {
 	  padding:0;
@@ -1475,7 +1450,10 @@ p {
 			font-size:1.2em;
 			margin-top: 50px;    
 		}
-		
+	&.intro-brain{
+		background-image: url(../img/brain_hero.jpg);
+		z-index: 1;
+	}	
 	}
 
 	.factcheck-promos{
